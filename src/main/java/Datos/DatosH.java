@@ -10,11 +10,11 @@ public class DatosH implements Datos{
     }
 
     public Object getMaquina() {
-        return maquina;
+        return this.maquina;
     }
 
     public Object getDatosMaquina() {
-        return datosMaquina;
+        return this.datosMaquina;
     }
 
     @Override

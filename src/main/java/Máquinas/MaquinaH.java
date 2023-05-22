@@ -1,14 +1,22 @@
 package Máquinas;
-import Datos.DatosA;
 import Datos.DatosH;
+import Observer.PatronObserver;
 
-public class MaquinaH implements Maquinas{
+public class MaquinaH extends MaquinaAbstracta{
     public MaquinaH(){
     }
 
+    private void notifyObserver(boolean estado){
+        for(PatronObserver observer: this.listaObserver){
+            System.out.println(observer.estadoFinal(estado));
+        }
+    }
 
-    @Override
-    public boolean actuarMaquina(Object datos) {
+    public void añadirLista (PatronObserver observer){
+        this.listaObserver.add(observer);
+    }
+
+    private boolean actuar (Object datos){
         if(datos instanceof DatosH){
             DatosH datosMaquinaH = (DatosH) datos;
             if(datosMaquinaH.getMaquina() instanceof Maquinas){
@@ -16,5 +24,12 @@ public class MaquinaH implements Maquinas{
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean actuarMaquina(Object datos) {
+        boolean resultado = actuar(datos);
+        notifyObserver(resultado);
+        return resultado;
     }
 }

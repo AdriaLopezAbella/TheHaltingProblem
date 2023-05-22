@@ -3,9 +3,9 @@ package Datos;
 public class DatosA implements Datos{
     Object num1;
     Object num2;
-    Character operacion;
+    Object operacion;
 
-    public DatosA(Object num1, Object num2, Character operacion){
+    public DatosA(Object num1, Object num2, Object operacion){
         this.num1 = num1;
         this.num2 = num2;
         this.operacion = operacion;
@@ -19,7 +19,7 @@ public class DatosA implements Datos{
         return num2;
     }
 
-    public Character getOperacion(){
+    public Object getOperacion(){
         return operacion;
     }
 
